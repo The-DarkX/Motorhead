@@ -12,6 +12,8 @@ public class EnemyController : MovementController
     public LayerMask hitMask;
 
     [Header("Other")]
+    public float scoreIncrement = 20f;
+    public float decrementIncrease = 0.1f;
     public bool showIndicators = false;
 
     private RaycastHit[] hits;
@@ -72,6 +74,12 @@ public class EnemyController : MovementController
 	{
         if (collision.gameObject != this && !collision.gameObject.CompareTag("Ground")) // If collides with other objects
         {
+            if (collision.gameObject.CompareTag("Player")) 
+            {
+                GameManager.instance.AddScore(scoreIncrement);
+                GameManager.instance.IncreaseDecrement(decrementIncrease);
+            }
+
             DestroyOnContact();
         }
 	}
