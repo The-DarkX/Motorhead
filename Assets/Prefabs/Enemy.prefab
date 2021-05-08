@@ -197,6 +197,10 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 23
+  trailParticles: {fileID: 4356304411389892089}
+  explosionParticles: {fileID: 7117488023770677205, guid: 4f7f62a57084a9f44a76ca64972f729d, type: 3}
+  scoreIncrement: 20
+  decrementIncrease: 0.1
   showIndicators: 1
 --- !u!1 &8322542596402117895
 GameObject:
@@ -388,6 +392,18 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
+      propertyPath: cullingMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -424,5 +440,10 @@ PrefabInstance:
 --- !u!4 &4356304411408260521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 421170, guid: 834c99069a124aa439d5795c3579843b, type: 3}
+  m_PrefabInstance: {fileID: 4356304411408117915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4356304411389892089 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
   m_PrefabInstance: {fileID: 4356304411408117915}
   m_PrefabAsset: {fileID: 0}

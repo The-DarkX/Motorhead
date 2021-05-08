@@ -11,6 +11,10 @@ public class EnemyController : MovementController
     public Transform[] sensorPositions;
     public LayerMask hitMask;
 
+    [Header("Effects")]
+    public ParticleSystem trailParticles;
+    public GameObject explosionParticles;
+
     [Header("Other")]
     public float scoreIncrement = 20f;
     public float decrementIncrease = 0.1f;
@@ -27,6 +31,8 @@ public class EnemyController : MovementController
         spawner = GetComponentInParent<EnemySpawner>();
 
         hits = new RaycastHit[sensorPositions.Length]; //Generating hits array
+
+        trailParticles.Play();
     }
 
 	void FixedUpdate()
@@ -72,20 +78,37 @@ public class EnemyController : MovementController
 
 	private void OnCollisionEnter(Collision collision)
 	{
-        if (collision.gameObject != this && !collision.gameObject.CompareTag("Ground")) // If collides with other objects
+        if (collision.gameObject != this) // If collides with other objects
         {
-            if (collision.gameObject.CompareTag("Player")) 
+            if (collision.gameObject.CompareTag("Enemy"))
             {
-                GameManager.instance.AddScore(scoreIncrement);
-                GameManager.instance.IncreaseDecrement(decrementIncrease);
-            }
+                Vector3 pos = collision.GetContact(0).point;
+                if (Physics.OverlapSphere(pos, 5, 1).Length != 0)
+                {
+                    GameObject explosion = Instantiate(explosionParticles, pos, Quaternion.identity);
+                    Destroy(explosion, 15f);
+                }
 
-            DestroyOnContact();
+                DestroyOnContact();
+            }
         }
 	}
 
-    void DestroyOnContact() 
+    public void DestroyOnContact() 
     {
+        trailParticles.Stop();
+
+        spawner.enemies.Remove(this); // Removed from enemies list
+        Destroy(gameObject);
+    }
+
+    public void Catch() 
+    {
+        trailParticles.Stop();
+
+        GameManager.instance.AddScore(scoreIncrement);
+        GameManager.instance.IncreaseDecrement(decrementIncrease);
+
         spawner.enemies.Remove(this); // Removed from enemies list
         Destroy(gameObject);
     }
