@@ -10,7 +10,7 @@ public class MovementController : MonoBehaviour
 
     bool canMove = true;
 
-    virtual public void Movement(Rigidbody rb, float rotation) 
+	virtual public void Movement(Rigidbody rb, float rotation) 
     {
         if (canMove)
         {

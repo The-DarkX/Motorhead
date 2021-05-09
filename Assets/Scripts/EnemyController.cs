@@ -6,11 +6,6 @@ public class EnemyController : MovementController
 {
     public float steerTime = 0.5f;
 
-    [Header("Sensors")]
-    public float sensorLength = 5f;
-    public Transform[] sensorPositions;
-    public LayerMask hitMask;
-
     [Header("Effects")]
     public ParticleSystem trailParticles;
     public GameObject explosionParticles;
@@ -18,53 +13,37 @@ public class EnemyController : MovementController
     [Header("Other")]
     public float scoreIncrement = 20f;
     public float decrementIncrease = 0.1f;
-    public bool showIndicators = false;
 
-    private RaycastHit[] hits;
     private float rotation;
     Rigidbody rb;
     EnemySpawner spawner;
+    FieldOfView sensor;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         spawner = GetComponentInParent<EnemySpawner>();
-
-        hits = new RaycastHit[sensorPositions.Length]; //Generating hits array
+        sensor = GetComponent<FieldOfView>();
 
         trailParticles.Play();
     }
 
 	void FixedUpdate()
     {
-        Sensors(); //Check the sensors
         Movement(rb, rotation); //Move the vehicle
-    }
 
-    void Sensors() 
-    {
-		for (int i = 0; i < sensorPositions.Length; i++)
-		{
-            Vector3 direction = sensorPositions[i].forward.normalized; // Creates laser direction
+        if (sensor.visibleTargets.Count > 0) 
+        {
+            float distanceLeft = Vector3.Distance(-transform.right, sensor.visibleTargets[0].position);
+            float distanceRight = Vector3.Distance(transform.right, sensor.visibleTargets[0].position);
 
-            if (Physics.Raycast(transform.position, direction, out hits[i], sensorLength, hitMask)) //If object detected on lasers
+            if (distanceLeft > distanceRight) //Obstacle on the Right
             {
-                if (showIndicators)
-                    Debug.DrawRay(sensorPositions[i].position, direction * sensorLength, Color.red); //Draw laser representation (found)
-
-                if (sensorPositions[i].localPosition.x > 0) //Sensor on the Right
-                {
-                    StartCoroutine(Steer(-1)); //Steer left
-                }
-                else if (sensorPositions[i].localPosition.x < 0) //Sensor on the Left
-                {
-                    StartCoroutine(Steer(1));//Steer right
-                }
+                StartCoroutine(Steer(-1)); //Steer left
             }
-            else
+            else //Obstacle on the Left
             {
-                if (showIndicators)
-                    Debug.DrawRay(sensorPositions[i].position, direction * sensorLength, Color.green); //Draw laser representation
+                StartCoroutine(Steer(1)); //Steer right
             }
         }
     }
@@ -97,6 +76,7 @@ public class EnemyController : MovementController
     public void DestroyOnContact() 
     {
         trailParticles.Stop();
+        AudioManager.instance.PlaySound("Explosion");
 
         spawner.enemies.Remove(this); // Removed from enemies list
         Destroy(gameObject);
@@ -105,6 +85,8 @@ public class EnemyController : MovementController
     public void Catch() 
     {
         trailParticles.Stop();
+
+        AudioManager.instance.PlaySound("Explosion");
 
         GameManager.instance.AddScore(scoreIncrement);
         GameManager.instance.IncreaseDecrement(decrementIncrease);
