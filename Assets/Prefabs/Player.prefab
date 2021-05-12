@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5505361951599488977}
   - component: {fileID: 5505361951599488978}
   - component: {fileID: 5505361951599488979}
+  - component: {fileID: 2761413056060361964}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -79,7 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6.5
   rotationSpeed: 200
-  trailParticles: {fileID: 0}
+  trailParticles: {fileID: 5284950207142655438}
+  explosionParticles: {fileID: 8156162809566443065, guid: be2fba8c8e5f03940bc1e7a557504360, type: 3}
 --- !u!114 &5505361951599488979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +95,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeOnSurface: 1
+--- !u!114 &2761413056060361964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5505361951599488980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f91d436ac4861419a15708c401d70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 3
+  viewAngle: 120
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 128
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  visibleTargets: []
 --- !u!1001 &1402098271259616057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,6 +123,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5505361951599488976}
     m_Modifications:
+    - target: {fileID: 6494941374075574007, guid: 3f37d662eaf8f304c8bd696d8e68a058, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
+      value: 0.09980084
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494941374075574007, guid: 3f37d662eaf8f304c8bd696d8e68a058, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].time
+      value: 0.36385995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494941374075574007, guid: 3f37d662eaf8f304c8bd696d8e68a058, type: 3}
+      propertyPath: SizeModule.curve.minCurve.m_Curve.Array.data[1].time
+      value: 0.12046707
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494941374075574007, guid: 3f37d662eaf8f304c8bd696d8e68a058, type: 3}
+      propertyPath: SizeModule.curve.minCurve.m_Curve.Array.data[2].time
+      value: 0.36385995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494941374075574007, guid: 3f37d662eaf8f304c8bd696d8e68a058, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value
+      value: 0.23887879
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494941374075574007, guid: 3f37d662eaf8f304c8bd696d8e68a058, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0.71621627
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494941374075574007, guid: 3f37d662eaf8f304c8bd696d8e68a058, type: 3}
+      propertyPath: SizeModule.curve.minCurve.m_Curve.Array.data[1].value
+      value: 0.3108108
+      objectReference: {fileID: 0}
     - target: {fileID: 6494941374094991015, guid: 3f37d662eaf8f304c8bd696d8e68a058, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -153,6 +204,11 @@ PrefabInstance:
 --- !u!4 &5284950207160991134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6494941374094991015, guid: 3f37d662eaf8f304c8bd696d8e68a058, type: 3}
+  m_PrefabInstance: {fileID: 1402098271259616057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5284950207142655438 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6494941374075574007, guid: 3f37d662eaf8f304c8bd696d8e68a058, type: 3}
   m_PrefabInstance: {fileID: 1402098271259616057}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5649956323338260161

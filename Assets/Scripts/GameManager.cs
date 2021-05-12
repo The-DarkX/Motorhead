@@ -7,15 +7,22 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Particles")]
+    public GameObject explosionParticles;
+    public GameObject catchParticles;
+
+    [Header("Score")]
     public TMP_Text scoreText;
 
     public float decreaseRate = 0.1f;
+    public float startingScore = 20f;
+    public bool canCount = true;
 
     float score;
 
-    bool counterStarted = false;
-
     AudioManager audioManager;
+
+    [HideInInspector] public Transform player;
 
     public static GameManager instance { get; private set; }
 
@@ -34,18 +41,21 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         audioManager = AudioManager.instance;
+        player = FindObjectOfType<PlayerController>().transform;
+
+        score = startingScore;
     }
 
     void Update()
     {
-        Score();
+        if (canCount)
+            Score();
     }
 
     void Score() 
     {
         if (score > 0)
         {
-            counterStarted = true;
             score -= decreaseRate * Time.deltaTime;
             scoreText.text = score.ToString("C", CultureInfo.CurrentCulture);
         }
@@ -54,20 +64,30 @@ public class GameManager : MonoBehaviour
             score = 0;
             scoreText.text = score.ToString("C", CultureInfo.CurrentCulture);
 
-            if (counterStarted)
-                Restart();
+            GameOver();
         }
     }
 
-    public void Restart()
+    IEnumerator Restart(float delay)
     {
+        yield return new WaitForSeconds(delay);
+
         int index = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(index);
     }
 
     public void GameOver()
     {
-        print("Game Over");
+        canCount = false;
+
+        player.gameObject.SetActive(false);
+        Instantiate(explosionParticles, player.position, Quaternion.identity);
+
+        audioManager.StopSound("MainTheme");
+        audioManager.PlaySound("Explosion");
+        audioManager.PlaySound("GameOver");
+        
+        StartCoroutine(Restart(3));
     }
 
     public void AddScore(float scoreIncrement)

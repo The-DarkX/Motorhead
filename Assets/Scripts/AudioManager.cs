@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
 
         for (int i = 0; i < sounds.Length; i++)

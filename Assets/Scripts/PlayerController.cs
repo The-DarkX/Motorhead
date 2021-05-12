@@ -6,14 +6,17 @@ public class PlayerController : MovementController
 {
 	[Header("Effects")]
 	public ParticleSystem trailParticles;
+	public GameObject explosionParticles;
 
 	float rotation;
 
 	Rigidbody rb;
+	FieldOfView sensor;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+		sensor = GetComponent<FieldOfView>();
 
 		trailParticles.Play();
 	}
@@ -30,9 +33,13 @@ public class PlayerController : MovementController
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.CompareTag("Enemy"))
+		if (sensor.visibleTargets.Contains(collision.gameObject.transform))
 		{
-			collision.gameObject.GetComponent<EnemyController>().Catch();
+			collision.gameObject.GetComponent<EnemyController>().Catch(collision);
+		}
+		else 
+		{
+			GameManager.instance.GameOver();
 		}
 	}
 }
