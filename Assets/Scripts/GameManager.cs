@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         audioManager.PlaySound("Explosion");
         audioManager.PlaySound("GameOver");
         
-        StartCoroutine(Restart(3));
+        StartCoroutine(Restart(2));
     }
 
     public void AddScore(float scoreIncrement)

@@ -34,28 +34,32 @@ public class EnemyController : MovementController
 
 	void FixedUpdate()
     {
-        Movement(rb, rotation); //Move the vehicle
-
-        if (sensor.visibleTargets.Count > 0) 
+        if (sensor.visibleTargets.Count > 0)
         {
-			for (int i = 0; i < sensor.visibleTargets.Count; i++)
-			{
-                if (sensor.visibleTargets[i] != null) 
-                {
-                    float distanceLeft = Vector3.Distance(-transform.right, sensor.visibleTargets[i].position);
-                    float distanceRight = Vector3.Distance(transform.right, sensor.visibleTargets[i].position);
+            int index = sensor.visibleTargets.Count - 1;
 
-                    if (distanceLeft > distanceRight) //Obstacle on the Right
-                    {
-                        StartCoroutine(Steer(-1)); //Steer left
-                    }
-                    else //Obstacle on the Left
-                    {
-                        StartCoroutine(Steer(1)); //Steer right
-                    }
+            if (sensor.visibleTargets[index] != null)
+            {
+                SetSpeed(moveSpeed * 0.8f);
+
+                float distanceLeft = Vector3.Distance(-transform.right, sensor.visibleTargets[index].position);
+                float distanceRight = Vector3.Distance(transform.right, sensor.visibleTargets[index].position);
+
+                if (distanceLeft > distanceRight) //Obstacle on the Right
+                {
+                    StartCoroutine(Steer(-1));
                 }
-			}
+                else //Obstacle on the Left
+                {
+                    StartCoroutine(Steer(1));
+                }
+
+                SetSpeed(moveSpeed);
+            }
         }
+
+        Movement(rb, rotation);
+
     }
 
     IEnumerator Steer(float input) 

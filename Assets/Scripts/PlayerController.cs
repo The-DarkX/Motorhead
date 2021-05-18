@@ -23,7 +23,7 @@ public class PlayerController : MovementController
 
 	void Update()
 	{
-		rotation = Input.GetAxis("Horizontal");
+		rotation = InputManager.movementAxis;
 	}
 
 	void FixedUpdate()

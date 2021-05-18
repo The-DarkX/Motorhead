@@ -8,13 +8,20 @@ public class MovementController : MonoBehaviour
     public float moveSpeed = 10f;
     public float rotationSpeed = 10f;
 
+    float currentSpeed;
+
     bool canMove = true;
+
+	private void Awake()
+	{
+        SetSpeed(moveSpeed);
+	}
 
 	virtual public void Movement(Rigidbody rb, float rotation) 
     {
         if (canMove)
         {
-            rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.deltaTime);
+            rb.MovePosition(rb.position + transform.forward * currentSpeed * Time.deltaTime);
             Vector3 yRotation = Vector3.up * rotation * rotationSpeed * Time.deltaTime;
             Quaternion deltaRotation = Quaternion.Euler(yRotation);
             Quaternion targetRotation = rb.rotation * deltaRotation;
@@ -27,5 +34,10 @@ public class MovementController : MonoBehaviour
         canMove = false;
         rb.velocity = Vector3.zero;
         rb.isKinematic = true;
+    }
+
+    virtual public void SetSpeed(float newSpeed) 
+    {
+        currentSpeed = newSpeed;
     }
 }

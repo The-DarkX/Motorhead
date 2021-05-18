@@ -91,35 +91,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9740b9a93686b514fb5faa7ab92c305f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 4
   rotationSpeed: 200
-  speedRamp:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  steerTime: 0.5
-  scoreIncrement: 20
-  decrementIncrease: 1
+  steerTime: 0.75
+  scoreIncrement: 10
+  decrementIncrease: 0.5
   trailParticles: {fileID: 4356304411389892089}
 --- !u!114 &7311554757840178460
 MonoBehaviour:
@@ -133,14 +109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f91d436ac4861419a15708c401d70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 2.5
+  viewRadius: 2
   viewAngle: 260
   targetMask:
     serializedVersion: 2
     m_Bits: 896
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   visibleTargets: []
 --- !u!1001 &408559847532420274
 PrefabInstance:

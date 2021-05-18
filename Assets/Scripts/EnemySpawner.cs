@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
             StartCoroutine(Spawn());
     }
 
-    IEnumerator Spawn() 
+    IEnumerator Spawn()
     {
         GameObject obj = SelectPrefab();
 
@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (Physics.CheckSphere(spawnPos, minSpawnDistance, whatIsObstacle))
         {
-            spawnPos = Random.onUnitSphere * planet.localScale.x;                
+            spawnPos = Random.onUnitSphere * planet.localScale.x;
         }
 
         GameObject enemy = Instantiate(obj, spawnPos, Quaternion.identity, transform);
@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
     }
 
-    GameObject SelectPrefab() 
+    GameObject SelectPrefab()
     {
         int index = Random.Range(0, enemyPrefabs.Length);
         return enemyPrefabs[index];
