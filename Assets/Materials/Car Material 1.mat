@@ -101,6 +101,7 @@ Material:
     - _LightProbeContribution: 3.5
     - _Metallic: 0
     - _Mode: 0
+    - _NoiseScale: 30
     - _OcclusionStrength: 1
     - _OutlineDepthSensitivity: 0.1
     - _OutlineNormalsSensitivity: 0.5
@@ -113,6 +114,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _Transparency: 0
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1

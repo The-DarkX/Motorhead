@@ -21,11 +21,14 @@ public class MovementController : MonoBehaviour
     {
         if (canMove)
         {
-            rb.MovePosition(rb.position + transform.forward * currentSpeed * Time.deltaTime);
-            Vector3 yRotation = Vector3.up * rotation * rotationSpeed * Time.deltaTime;
-            Quaternion deltaRotation = Quaternion.Euler(yRotation);
-            Quaternion targetRotation = rb.rotation * deltaRotation;
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 50f * Time.deltaTime));
+            if (GameManager.instance.hasGameStarted)
+            {
+                rb.MovePosition(rb.position + transform.forward * currentSpeed * Time.fixedDeltaTime);
+                Vector3 yRotation = Vector3.up * rotation * rotationSpeed * Time.fixedDeltaTime;
+                Quaternion deltaRotation = Quaternion.Euler(yRotation);
+                Quaternion targetRotation = rb.rotation * deltaRotation;
+                rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 50f * Time.fixedDeltaTime));
+            }
         }
     }
 

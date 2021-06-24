@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
 
     public float decreaseRate = 0.1f;
     public float startingScore = 20f;
-    public bool canCount = true;
+    public bool canCount = false;
+    public bool hasGameStarted = false;
 
     float score;
 
@@ -42,6 +43,8 @@ public class GameManager : MonoBehaviour
     {
         audioManager = AudioManager.instance;
         player = FindObjectOfType<PlayerController>().transform;
+
+        scoreText.transform.parent.gameObject.SetActive(false);
 
         score = startingScore;
     }
@@ -76,6 +79,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(index);
     }
 
+    public void BeginGame() 
+    {
+        hasGameStarted = true;
+        canCount = true;
+        scoreText.transform.parent.gameObject.SetActive(true);
+
+        audioManager.PlaySound("MainTheme");
+    }
+
     public void GameOver()
     {
         canCount = false;
@@ -86,7 +98,7 @@ public class GameManager : MonoBehaviour
         audioManager.StopSound("MainTheme");
         audioManager.PlaySound("Explosion");
         audioManager.PlaySound("GameOver");
-        
+
         StartCoroutine(Restart(2));
     }
 

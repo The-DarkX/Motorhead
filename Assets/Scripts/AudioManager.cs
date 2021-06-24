@@ -29,11 +29,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-	private void Start()
-	{
-        PlaySound("MainTheme");
-	}
-
 	public void PlaySound(string name)
     {
         for (int i = 0; i < sounds.Length; i++)
