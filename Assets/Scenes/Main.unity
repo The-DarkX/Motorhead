@@ -3356,7 +3356,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownText: {fileID: 1473924732}
-  countdownTime: 3
 --- !u!1 &1965879468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4020,7 +4019,7 @@ PrefabInstance:
     - target: {fileID: 4916279019934065132, guid: b13d64e52af11084291c43d4ca78619a, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4711208715938537054, guid: e7df3bf58a8f37b4e9ab05883aba93c3, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4916279019934065133, guid: b13d64e52af11084291c43d4ca78619a, type: 3}
       propertyPath: m_RootOrder
       value: 4
