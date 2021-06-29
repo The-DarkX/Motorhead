@@ -21,7 +21,7 @@ public class MovementController : MonoBehaviour
     {
         if (canMove)
         {
-            if (GameManager.instance.hasGameStarted)
+            if (GameManager.instance.isGameOn)
             {
                 rb.MovePosition(rb.position + transform.forward * currentSpeed * Time.fixedDeltaTime);
                 Vector3 yRotation = Vector3.up * rotation * rotationSpeed * Time.fixedDeltaTime;

@@ -17,11 +17,12 @@ public class GameManager : MonoBehaviour
     public float decreaseRate = 0.1f;
     public float startingScore = 20f;
     public bool canCount = false;
-    public bool hasGameStarted = false;
+    public bool isGameOn = false;
 
     float score;
 
     AudioManager audioManager;
+    
 
     [HideInInspector] public Transform player;
 
@@ -81,11 +82,20 @@ public class GameManager : MonoBehaviour
 
     public void BeginGame() 
     {
-        hasGameStarted = true;
+        isGameOn = true;
         canCount = true;
         scoreText.transform.parent.gameObject.SetActive(true);
 
         audioManager.PlaySound("MainTheme");
+    }
+
+    public void StopGame()
+    {
+        isGameOn = false;
+        canCount = false;
+        scoreText.transform.parent.gameObject.SetActive(false);
+
+        audioManager.StopSound("MainTheme");
     }
 
     public void GameOver()

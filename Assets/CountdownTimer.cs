@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class StartCountdownTimer : MonoBehaviour
+public class CountdownTimer : MonoBehaviour
 {
     public TMP_Text countdownText;
-    public int countdownTime = 3;
 
     float countdown;
 
+    GameManager manager;
+
 	private void Start()
 	{
+        manager = GameManager.instance;
+    }
+
+    public void TriggerCountdown(float countdownTime) 
+    {
         countdown = countdownTime;
 
         StartCoroutine(CountdownToStart());
+
+        manager.BeginGame();
     }
 
     IEnumerator CountdownToStart()
