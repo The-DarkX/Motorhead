@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using EZCameraShake;
 
 public class GameManager : MonoBehaviour
 {
@@ -109,7 +110,9 @@ public class GameManager : MonoBehaviour
         audioManager.PlaySound("Explosion");
         audioManager.PlaySound("GameOver");
 
-        StartCoroutine(Restart(2));
+        CameraShaker.Instance.ShakeOnce(8, 4, 3, 2);
+
+        StartCoroutine(Restart(4));
     }
 
     public void AddScore(float scoreIncrement)

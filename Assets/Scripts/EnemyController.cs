@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class EnemyController : MovementController
 {
@@ -82,6 +83,8 @@ public class EnemyController : MovementController
 
     public void DestroyOnContact(Collision other) 
     {
+        CameraShaker.Instance.ShakeOnce(1, 4, 0, 0.5f);
+
         trailParticles.Stop();
         Vector3 pos = other.GetContact(0).point;
         GameObject explosion = Instantiate(explosionParticles, pos, explosionParticles.transform.rotation);
@@ -95,6 +98,8 @@ public class EnemyController : MovementController
 
     public void Catch(Collision other) 
     {
+        CameraShaker.Instance.ShakeOnce(7, 4, 0, 1);
+
         trailParticles.Stop();
         Vector3 pos = other.GetContact(0).point;
         GameObject explosion = Instantiate(catchParticles, pos, catchParticles.transform.rotation);
