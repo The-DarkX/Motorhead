@@ -13,17 +13,20 @@ public class PlayerController : MovementController
 	Rigidbody rb;
 	FieldOfView sensor;
 
+	InputManager input;
+
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		sensor = GetComponent<FieldOfView>();
+		input = InputManager.instance;
 
 		trailParticles.Play();
 	}
 
 	void Update()
 	{
-		rotation = InputManager.movementAxis;
+		rotation = input.movementAxis;
 	}
 
 	void FixedUpdate()

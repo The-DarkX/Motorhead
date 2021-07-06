@@ -14,6 +14,8 @@ public class CountdownTimer : MonoBehaviour
 	private void Start()
 	{
         manager = GameManager.instance;
+
+        TriggerCountdown(3);
     }
 
     public void TriggerCountdown(float countdownTime) 
@@ -21,8 +23,6 @@ public class CountdownTimer : MonoBehaviour
         countdown = countdownTime;
 
         StartCoroutine(CountdownToStart());
-
-        manager.BeginGame();
     }
 
     IEnumerator CountdownToStart()
@@ -37,9 +37,9 @@ public class CountdownTimer : MonoBehaviour
         }
 
         countdownText.text = "GO!";
+        manager.BeginGame();
 
-        GameManager.instance.BeginGame();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         countdownText.gameObject.SetActive(false);
     }

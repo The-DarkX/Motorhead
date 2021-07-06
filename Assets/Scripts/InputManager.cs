@@ -7,28 +7,38 @@ public class InputManager : MonoBehaviour
 {
     PlayerControls controls;
 
-	public static float movementAxis;
+	public float movementAxis;
 
-	public static Vector3 acceleration;
+	public Vector3 acceleration;
+
+	public bool pauseButton = false;
+
+	public static InputManager instance { get; private set; }
 
 	private void Awake()
 	{
+		if (instance != null)
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			instance = this;
+		}
+
 		controls = new PlayerControls();
 
-		if (Keyboard.current != null)
-		{
-			controls.Gameplay.Movement.performed += ctx => movementAxis = ctx.ReadValue<float>();
-			controls.Gameplay.Movement.canceled += _ => movementAxis = 0;
-		}
+		controls.Gameplay.Movement.performed += ctx => movementAxis = ctx.ReadValue<float>();
+		controls.Gameplay.Movement.canceled += _ => movementAxis = 0;
+
+		controls.Gameplay.Pause.performed += Jump;
 	}
 
-	private void Update()
+
+	void Jump(InputAction.CallbackContext context) 
 	{
-		if (Accelerometer.current != null)
-		{
-			acceleration = Accelerometer.current.acceleration.ReadValue();
-			print(acceleration);
-		}
+		pauseButton = !pauseButton;
+		Debug.Log(pauseButton);
 	}
 
 	private void OnEnable()

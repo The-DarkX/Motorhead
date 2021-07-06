@@ -12,6 +12,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "4246ddef-eb1c-4c5e-836f-3b446b6c7082",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -49,13 +57,57 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "58691528-4bc9-4d10-8769-187ecafab1b7",
-                    "path": "<Sensor>/acceleration",
+                    "name": "1D Axis",
+                    "id": "9ac41cdc-7932-490d-b47e-37481684a8fb",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mobile",
+                    "groups": "",
                     "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "97d0239b-a1c9-4a03-b6b5-eb66f16ff589",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Console",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "f489263d-0289-4f75-9752-3ab9bd26fd8b",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Console",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "84613666-cbc3-41bc-b2ed-e1821638f0d9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33064b81-04b1-4c9d-a910-d3efe0ae06f5",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Console",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -69,18 +121,18 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
-                    "isOptional": false,
+                    "isOptional": true,
                     "isOR": false
                 }
             ]
         },
         {
-            "name": "Mobile",
-            "bindingGroup": "Mobile",
+            "name": "Console",
+            "bindingGroup": "Console",
             "devices": [
                 {
-                    "devicePath": "<Accelerometer>",
-                    "isOptional": false,
+                    "devicePath": "<Gamepad>",
+                    "isOptional": true,
                     "isOR": false
                 }
             ]

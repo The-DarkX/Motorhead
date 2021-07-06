@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
     float score;
 
     AudioManager audioManager;
-    
 
     [HideInInspector] public Transform player;
 
@@ -45,6 +44,7 @@ public class GameManager : MonoBehaviour
         audioManager = AudioManager.instance;
         player = FindObjectOfType<PlayerController>().transform;
 
+        isGameOn = false;
         scoreText.transform.parent.gameObject.SetActive(false);
 
         score = startingScore;
