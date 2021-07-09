@@ -11,14 +11,12 @@ public class PlayerController : MovementController
 	float rotation;
 
 	Rigidbody rb;
-	FieldOfView sensor;
 
 	InputManager input;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
-		sensor = GetComponent<FieldOfView>();
 		input = InputManager.instance;
 
 		trailParticles.Play();
@@ -44,16 +42,5 @@ public class PlayerController : MovementController
 		{
 			GameManager.instance.GameOver();
 		}
-
-		/*
-		if (sensor.visibleTargets.Contains(collision.gameObject.transform))
-		{
-			collision.gameObject.GetComponent<EnemyController>().Catch(collision);
-		}
-		else 
-		{
-			GameManager.instance.GameOver();
-		}
-		*/
 	}
 }

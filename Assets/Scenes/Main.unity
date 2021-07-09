@@ -3893,6 +3893,34 @@ PrefabInstance:
       propertyPath: whatIsObstacle.m_Bits
       value: 896
       objectReference: {fileID: 0}
+    - target: {fileID: 2944956859668266520, guid: b51740eaec9430f4fa19c1491e387d99, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944956859668266520, guid: b51740eaec9430f4fa19c1491e387d99, type: 3}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5505361951599488980, guid: 703b8dd2e4eb88e449e801833d82c541, type: 3}
+    - target: {fileID: 2944956859668266520, guid: b51740eaec9430f4fa19c1491e387d99, type: 3}
+      propertyPath: enemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5505361951599488980, guid: 211c57661dab3eb4682ef83b2dac3905, type: 3}
+    - target: {fileID: 2944956859668266520, guid: b51740eaec9430f4fa19c1491e387d99, type: 3}
+      propertyPath: enemyPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 5505361951599488980, guid: ff1caf607bf4cdb4f9bfc626caea2e46, type: 3}
+    - target: {fileID: 2944956859668266520, guid: b51740eaec9430f4fa19c1491e387d99, type: 3}
+      propertyPath: enemyPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 5505361951599488980, guid: 10e22b0f172fbe34a810459f8e5de8f2, type: 3}
+    - target: {fileID: 2944956859668266520, guid: b51740eaec9430f4fa19c1491e387d99, type: 3}
+      propertyPath: enemyPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 5505361951599488980, guid: 37f747dccad457a4589c7f376b306c5f, type: 3}
+    - target: {fileID: 2944956859668266520, guid: b51740eaec9430f4fa19c1491e387d99, type: 3}
+      propertyPath: enemyPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 5505361951599488980, guid: 45e914294a707d24a8251740e2fc263c, type: 3}
     - target: {fileID: 2944956859668266521, guid: b51740eaec9430f4fa19c1491e387d99, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4232,41 +4260,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5505361951599488978, guid: 354e0dffaf2f0544d95e015b9b25de43, type: 3}
-      propertyPath: moveSpeed
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5505361951599488978, guid: 354e0dffaf2f0544d95e015b9b25de43, type: 3}
-      propertyPath: speedRamp.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5505361951599488978, guid: 354e0dffaf2f0544d95e015b9b25de43, type: 3}
-      propertyPath: speedRamp.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5505361951599488978, guid: 354e0dffaf2f0544d95e015b9b25de43, type: 3}
-      propertyPath: speedRamp.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5505361951599488978, guid: 354e0dffaf2f0544d95e015b9b25de43, type: 3}
-      propertyPath: speedRamp.m_Curve.Array.data[1].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5505361951599488978, guid: 354e0dffaf2f0544d95e015b9b25de43, type: 3}
-      propertyPath: speedRamp.m_Curve.Array.data[1].outSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5505361951599488979, guid: 354e0dffaf2f0544d95e015b9b25de43, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5505361951599488980, guid: 354e0dffaf2f0544d95e015b9b25de43, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5505361951599488980, guid: 354e0dffaf2f0544d95e015b9b25de43, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 354e0dffaf2f0544d95e015b9b25de43, type: 3}
