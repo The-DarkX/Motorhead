@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
         audioManager.PlaySound("Explosion");
         audioManager.PlaySound("GameOver");
 
-        CameraShaker.Instance.ShakeOnce(8, 4, 3, 2);
+        CameraShaker.Instance.ShakeOnce(7, 2, 0, 5);
 
         StartCoroutine(Restart(4));
     }

@@ -83,7 +83,7 @@ public class EnemyController : MovementController
 
     public void DestroyOnContact(Collision other) 
     {
-        CameraShaker.Instance.ShakeOnce(1, 4, 0, 0.5f);
+        CameraShaker.Instance.ShakeOnce(4, 3, 0, 1);
 
         trailParticles.Stop();
         Vector3 pos = other.GetContact(0).point;
@@ -98,7 +98,7 @@ public class EnemyController : MovementController
 
     public void Catch(Collision other) 
     {
-        CameraShaker.Instance.ShakeOnce(7, 4, 0, 1);
+        CameraShaker.Instance.ShakeOnce(5, 3, 0, 1);
 
         trailParticles.Stop();
         Vector3 pos = other.GetContact(0).point;

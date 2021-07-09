@@ -36,6 +36,16 @@ public class PlayerController : MovementController
 
 	private void OnCollisionEnter(Collision collision)
 	{
+		if (collision.gameObject.CompareTag("Enemy"))
+		{
+			collision.gameObject.GetComponent<EnemyController>().Catch(collision);
+		}
+		else 
+		{
+			GameManager.instance.GameOver();
+		}
+
+		/*
 		if (sensor.visibleTargets.Contains(collision.gameObject.transform))
 		{
 			collision.gameObject.GetComponent<EnemyController>().Catch(collision);
@@ -44,5 +54,6 @@ public class PlayerController : MovementController
 		{
 			GameManager.instance.GameOver();
 		}
+		*/
 	}
 }
