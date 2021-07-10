@@ -255,7 +255,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineDepthSensitivity: 0.2
     - _OutlineNormalsSensitivity: 0.5
-    - _OutlineThickness: 0
+    - _OutlineThickness: 2
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5

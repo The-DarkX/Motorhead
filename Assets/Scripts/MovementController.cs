@@ -6,18 +6,17 @@ public class MovementController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 10f;
-    public float rotationSpeed = 10f;
+    public float rotationMultiplier = 20f;
     public Transform[] wheels;
 
-    float currentSpeed;
-
-    float wheelSpinSpeed = 10f;
+    [HideInInspector] public float currentSpeed;
+    [HideInInspector] public float rotationSpeed;
 
     bool canMove = true;
 
 	private void Awake()
 	{
-        SetSpeed(moveSpeed);
+        currentSpeed = moveSpeed;
 	}
 
 	virtual public void Movement(Rigidbody rb, float rotation) 
@@ -26,6 +25,8 @@ public class MovementController : MonoBehaviour
         {
             if (GameManager.instance.isGameOn)
             {
+                rotationSpeed = currentSpeed * rotationMultiplier;
+
                 rb.MovePosition(rb.position + transform.forward * currentSpeed * Time.fixedDeltaTime);
                 Vector3 yRotation = Vector3.up * rotation * rotationSpeed * Time.fixedDeltaTime;
                 Quaternion deltaRotation = Quaternion.Euler(yRotation);
@@ -34,7 +35,7 @@ public class MovementController : MonoBehaviour
 
 				foreach (Transform wheel in wheels)
 				{
-					wheel.transform.Rotate(wheelSpinSpeed, 0, 0);
+                    wheel.transform.Rotate(currentSpeed, 0, 0);
 				}
             }
         }
@@ -45,10 +46,5 @@ public class MovementController : MonoBehaviour
         canMove = false;
         rb.velocity = Vector3.zero;
         rb.isKinematic = true;
-    }
-
-    virtual public void SetSpeed(float newSpeed) 
-    {
-        currentSpeed = newSpeed;
     }
 }

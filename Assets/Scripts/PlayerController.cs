@@ -25,6 +25,8 @@ public class PlayerController : MovementController
 	void Update()
 	{
 		rotation = input.movementAxis;
+
+		currentSpeed = moveSpeed * (GameManager.instance.fuel / 100);
 	}
 
 	void FixedUpdate()
@@ -34,11 +36,22 @@ public class PlayerController : MovementController
 
 	private void OnCollisionEnter(Collision collision)
 	{
+		EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+
 		if (collision.gameObject.CompareTag("Enemy"))
 		{
-			collision.gameObject.GetComponent<EnemyController>().Catch(collision);
+			switch (enemy.collectableType)
+			{
+				case CollectableType.Coin:
+					enemy.ScorePoints(collision);
+					break;
+
+				case CollectableType.Fuel:
+					enemy.Refuel(collision);
+					break;
+			}
 		}
-		else 
+		else
 		{
 			GameManager.instance.GameOver();
 		}

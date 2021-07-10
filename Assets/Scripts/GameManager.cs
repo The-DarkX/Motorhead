@@ -15,10 +15,15 @@ public class GameManager : MonoBehaviour
     [Header("Score")]
     public TMP_Text scoreText;
 
-    public float decreaseRate = 0.1f;
-    public float startingScore = 20f;
-    public bool canCount = false;
+    public GameObject gameOverCanvas;
+
+    public bool useTimer = true;
     public bool isGameOn = false;
+
+    [Header("Fuel")]
+    public float fuel = 100;
+    public float fuelLeakRate = 0.5f;
+    public float maxFuel = 120f;
 
     float score;
 
@@ -47,29 +52,30 @@ public class GameManager : MonoBehaviour
 
         isGameOn = false;
         scoreText.transform.parent.gameObject.SetActive(false);
-
-        score = startingScore;
+        gameOverCanvas.SetActive(false);
     }
 
     void Update()
     {
-        if (canCount)
-            Score();
+        if (isGameOn) 
+        {
+            if (useTimer)
+                ScoreCounter();
+
+            DecreaseFuel();
+        }
     }
 
-    void Score() 
+    void ScoreCounter() 
     {
         if (score > 0)
         {
-            score -= decreaseRate * Time.deltaTime;
             scoreText.text = score.ToString("C", CultureInfo.CurrentCulture);
         }
         else 
         {
             score = 0;
             scoreText.text = score.ToString("C", CultureInfo.CurrentCulture);
-
-            GameOver();
         }
     }
 
@@ -84,7 +90,6 @@ public class GameManager : MonoBehaviour
     public void BeginGame() 
     {
         isGameOn = true;
-        canCount = true;
         scoreText.transform.parent.gameObject.SetActive(true);
 
         audioManager.PlaySound("MainTheme");
@@ -93,7 +98,6 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         isGameOn = false;
-        canCount = false;
         scoreText.transform.parent.gameObject.SetActive(false);
 
         audioManager.StopSound("MainTheme");
@@ -101,16 +105,17 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        canCount = false;
-
         player.gameObject.SetActive(false);
         Instantiate(explosionParticles, player.position, Quaternion.identity);
 
-        audioManager.StopSound("MainTheme");
+        StopGame();
+
         audioManager.PlaySound("Explosion");
         audioManager.PlaySound("GameOver");
 
         CameraShaker.Instance.ShakeOnce(7, 2, 0, 5);
+
+        gameOverCanvas.SetActive(true);
 
         StartCoroutine(Restart(4));
     }
@@ -150,9 +155,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void IncreaseDecrement(float increase) 
+    void DecreaseFuel()
     {
-        decreaseRate += increase;
+        if (fuel > 0)
+        {
+            fuel -= Time.deltaTime * fuelLeakRate;
+        }
+        else
+        {
+            fuel = 0;
+            GameOver();
+        }
+    }
+
+    public void AddFuel(float amount)
+    {
+        if (fuel + amount < maxFuel)
+        {
+            fuel += amount;
+        }
+        else
+        {
+            fuel = maxFuel;
+        }
     }
 
     public void LoadScene(int index)

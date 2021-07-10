@@ -8,8 +8,11 @@ public class EnemyController : MovementController
     public float steerTime = 0.5f;
 
     [Header("Other")]
-    public float scoreIncrement = 20f;
-    public float decrementIncrease = 0.1f;
+    public float minScoreIncrement = 10f;
+    public float maxScoreIncrement = 30f;
+
+    public CollectableType collectableType;
+
     public ParticleSystem trailParticles;
 
     private float rotation = 0;
@@ -41,7 +44,7 @@ public class EnemyController : MovementController
 
             if (sensor.visibleTargets[index] != null)
             {
-                SetSpeed(moveSpeed * 0.8f);
+                currentSpeed = moveSpeed * 0.8f;
 
                 float distanceLeft = Vector3.Distance(-transform.right, sensor.visibleTargets[index].position);
                 float distanceRight = Vector3.Distance(transform.right, sensor.visibleTargets[index].position);
@@ -55,7 +58,7 @@ public class EnemyController : MovementController
                     StartCoroutine(Steer(1));
                 }
 
-                SetSpeed(moveSpeed);
+                currentSpeed = moveSpeed;
             }
         }
 
@@ -96,7 +99,7 @@ public class EnemyController : MovementController
         Destroy(gameObject);
     }
 
-    public void Catch(Collision other) 
+    public void ScorePoints(Collision other) 
     {
         CameraShaker.Instance.ShakeOnce(5, 3, 0, 1);
 
@@ -107,10 +110,32 @@ public class EnemyController : MovementController
 
         AudioManager.instance.PlaySound("Catch");
 
-        GameManager.instance.AddScore(scoreIncrement);
-        GameManager.instance.IncreaseDecrement(decrementIncrease);
+        GameManager.instance.AddScore(Random.Range(minScoreIncrement, maxScoreIncrement));
 
         spawner.enemies.Remove(this); // Removed from enemies list
         Destroy(gameObject);
     }
+
+    public void Refuel(Collision other)
+    {
+        CameraShaker.Instance.ShakeOnce(5, 3, 0, 1);
+
+        trailParticles.Stop();
+        Vector3 pos = other.GetContact(0).point;
+        GameObject explosion = Instantiate(catchParticles, pos, catchParticles.transform.rotation);
+        Destroy(explosion, 2);
+
+        AudioManager.instance.PlaySound("Refuel");
+
+        GameManager.instance.AddFuel(Random.Range(minScoreIncrement, maxScoreIncrement));
+
+        spawner.enemies.Remove(this); // Removed from enemies list
+        Destroy(gameObject);
+    }
+}
+
+public enum CollectableType 
+{
+    Coin,
+    Fuel
 }

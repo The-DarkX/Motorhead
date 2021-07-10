@@ -48,7 +48,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3429405, y: 0.9495785, z: 0.861163}
+  m_Size: {x: 0.3429405, y: 0.9495785, z: 0.61588967}
   m_Center: {x: 0, y: 0.5234908, z: 0.0032018423}
 --- !u!54 &5505361951599488977
 Rigidbody:
@@ -92,15 +92,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  rotationSpeed: 200
+  rotationMultiplier: 35
   wheels:
   - {fileID: 2392817315571199398}
   - {fileID: 706691774961440858}
   - {fileID: 6960993332172699000}
   - {fileID: 4371783845276680451}
+  currentSpeed: 0
+  rotationSpeed: 35
   steerTime: 0.75
-  scoreIncrement: 10
-  decrementIncrease: 0.25
+  minScoreIncrement: 10
+  maxScoreIncrement: 30
+  collectableType: 0
   trailParticles: {fileID: 4356304411389892089}
 --- !u!114 &7311554757840178460
 MonoBehaviour:

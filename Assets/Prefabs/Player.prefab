@@ -78,14 +78,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6.5
-  rotationSpeed: 200
+  rotationMultiplier: 40
   wheels:
   - {fileID: 7310040273518227215}
   - {fileID: 4176313675673623419}
   - {fileID: 5142826376727106361}
   - {fileID: 8979699748323327360}
+  currentSpeed: 0
+  rotationSpeed: 35
   trailParticles: {fileID: 5284950207142655438}
   explosionParticles: {fileID: 8156162809566443065, guid: be2fba8c8e5f03940bc1e7a557504360, type: 3}
+  speedDecreaseRate: 0.2
 --- !u!114 &5505361951599488979
 MonoBehaviour:
   m_ObjectHideFlags: 0
