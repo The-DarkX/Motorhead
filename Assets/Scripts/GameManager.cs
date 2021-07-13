@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
 
     public GameObject gameOverCanvas;
+    public GameObject speedometerCanvas;
     public RectTransform speedometerArrow;
 
     public bool useTimer = true;
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerController>().transform;
 
         isGameOn = false;
-        scoreText.transform.parent.gameObject.SetActive(false);
+        speedometerCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
 
         currentFuelLeakRate = fuelLeakRate;
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     void FuelCounter() 
     {
-        Quaternion arrowRotation = Quaternion.Euler(0, 0, fuel * (-205 / maxFuel));
+        Quaternion arrowRotation = Quaternion.Euler(0, 0, fuel * (-200 / maxFuel));
         speedometerArrow.rotation = arrowRotation;
     } 
 
@@ -104,7 +105,7 @@ public class GameManager : MonoBehaviour
     public void BeginGame() 
     {
         isGameOn = true;
-        scoreText.transform.parent.gameObject.SetActive(true);
+        speedometerCanvas.SetActive(true);
 
         audioManager.PlaySound("MainTheme");
         audioManager.PlaySound("CarEngine");
@@ -113,7 +114,7 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         isGameOn = false;
-        scoreText.transform.parent.gameObject.SetActive(false);
+        speedometerCanvas.SetActive(false);
 
         audioManager.StopSound("MainTheme");
         audioManager.StopSound("CarEngine");

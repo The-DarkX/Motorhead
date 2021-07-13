@@ -28,7 +28,7 @@ public class MovementController : MonoBehaviour
         {
             if (GameManager.instance.isGameOn)
             {
-                trailParticles.Play();
+                //trailParticles.Play();
                 //trailParticles.enableEmission = true;
 
                 rotationSpeed = currentSpeed * rotationMultiplier;
