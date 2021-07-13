@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2861677612599916827}
   - component: {fileID: 2861677612599916826}
+  - component: {fileID: 1892971919}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -43,3 +44,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59fd359e8043d341a050e93788ed1e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionParticles: {fileID: 8156162809566443065, guid: be2fba8c8e5f03940bc1e7a557504360, type: 3}
+  catchParticles: {fileID: 4534865624399157714, guid: 127714a078ce1be4fbde4f62c4108050, type: 3}
+  scoreText: {fileID: 0}
+  gameOverCanvas: {fileID: 0}
+  useTimer: 1
+  isGameOn: 0
+  fuel: 100
+  fuelLeakRate: 5
+  maxFuel: 120
+  player: {fileID: 0}
+--- !u!114 &1892971919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861677612599916825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51eae3eef20763843bf1ed23e70161f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdownText: {fileID: 0}

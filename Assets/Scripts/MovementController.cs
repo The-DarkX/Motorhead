@@ -12,6 +12,9 @@ public class MovementController : MonoBehaviour
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public float rotationSpeed;
 
+    [Header("Effects")]
+    public ParticleSystem trailParticles;
+
     bool canMove = true;
 
 	private void Awake()
@@ -25,6 +28,9 @@ public class MovementController : MonoBehaviour
         {
             if (GameManager.instance.isGameOn)
             {
+                trailParticles.Play();
+                //trailParticles.enableEmission = true;
+
                 rotationSpeed = currentSpeed * rotationMultiplier;
 
                 rb.MovePosition(rb.position + transform.forward * currentSpeed * Time.fixedDeltaTime);

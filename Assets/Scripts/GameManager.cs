@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
 
     public GameObject gameOverCanvas;
+    public RectTransform speedometerArrow;
 
     public bool useTimer = true;
     public bool isGameOn = false;
@@ -23,9 +24,11 @@ public class GameManager : MonoBehaviour
     [Header("Fuel")]
     public float fuel = 100;
     public float fuelLeakRate = 0.5f;
+    public float fuelLeakIncrease = 0.5f;
     public float maxFuel = 120f;
 
     float score;
+    float currentFuelLeakRate;
 
     AudioManager audioManager;
 
@@ -53,11 +56,15 @@ public class GameManager : MonoBehaviour
         isGameOn = false;
         scoreText.transform.parent.gameObject.SetActive(false);
         gameOverCanvas.SetActive(false);
+
+        currentFuelLeakRate = fuelLeakRate;
     }
 
     void Update()
     {
-        if (isGameOn) 
+        FuelCounter();
+
+        if (isGameOn)
         {
             if (useTimer)
                 ScoreCounter();
@@ -66,18 +73,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void ScoreCounter() 
+    void ScoreCounter()
     {
         if (score > 0)
         {
             scoreText.text = score.ToString("C", CultureInfo.CurrentCulture);
         }
-        else 
+        else
         {
             score = 0;
             scoreText.text = score.ToString("C", CultureInfo.CurrentCulture);
         }
     }
+
+    void FuelCounter() 
+    {
+        Quaternion arrowRotation = Quaternion.Euler(0, 0, fuel * (-205 / maxFuel));
+        speedometerArrow.rotation = arrowRotation;
+    } 
+
 
     IEnumerator Restart(float delay)
     {
@@ -93,6 +107,7 @@ public class GameManager : MonoBehaviour
         scoreText.transform.parent.gameObject.SetActive(true);
 
         audioManager.PlaySound("MainTheme");
+        audioManager.PlaySound("CarEngine");
     }
 
     public void StopGame()
@@ -101,6 +116,7 @@ public class GameManager : MonoBehaviour
         scoreText.transform.parent.gameObject.SetActive(false);
 
         audioManager.StopSound("MainTheme");
+        audioManager.StopSound("CarEngine");
     }
 
     public void GameOver()
@@ -120,7 +136,37 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Restart(4));
     }
 
-    public void AddScore(float scoreIncrement)
+	#region Fuel
+	void DecreaseFuel()
+    {
+        if (fuel > 0)
+        {
+            fuel -= Time.deltaTime * currentFuelLeakRate;
+        }
+        else
+        {
+            fuel = 0;
+            GameOver();
+        }
+    }
+
+    public void AddFuel(float amount)
+    {
+        currentFuelLeakRate += fuelLeakIncrease;
+
+        if (fuel + amount < maxFuel)
+        {
+            fuel += amount;
+        }
+        else
+        {
+            fuel = maxFuel;
+        }
+    }
+	#endregion
+
+	#region Score
+	public void AddScore(float scoreIncrement)
     {
         float newScore = score + scoreIncrement;
 
@@ -128,18 +174,6 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat("GameScore", newScore);
         }
-        score = newScore;
-    }
-
-    public void AddScore(float minScoreIncrement, float maxScoreIncrement)
-    {
-        float newScore = Random.Range(minScoreIncrement, maxScoreIncrement);
-
-        if (newScore > PlayerPrefs.GetFloat("GameScore", 0))
-        {
-            PlayerPrefs.SetFloat("GameScore", newScore);
-        }
-
         score = newScore;
     }
 
@@ -154,33 +188,10 @@ public class GameManager : MonoBehaviour
             score -= scoreDecrement;
         }
     }
+	#endregion
 
-    void DecreaseFuel()
-    {
-        if (fuel > 0)
-        {
-            fuel -= Time.deltaTime * fuelLeakRate;
-        }
-        else
-        {
-            fuel = 0;
-            GameOver();
-        }
-    }
-
-    public void AddFuel(float amount)
-    {
-        if (fuel + amount < maxFuel)
-        {
-            fuel += amount;
-        }
-        else
-        {
-            fuel = maxFuel;
-        }
-    }
-
-    public void LoadScene(int index)
+	#region Scene Management
+	public void LoadScene(int index)
     {
         SceneManager.LoadScene(index);
     }
@@ -189,4 +200,5 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+	#endregion
 }

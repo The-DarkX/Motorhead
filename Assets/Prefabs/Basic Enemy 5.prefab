@@ -100,11 +100,11 @@ MonoBehaviour:
   - {fileID: 2033953155727584685}
   currentSpeed: 0
   rotationSpeed: 35
+  trailParticles: {fileID: 4356304411389892089}
   steerTime: 0.75
   minScoreIncrement: 10
   maxScoreIncrement: 30
   collectableType: 0
-  trailParticles: {fileID: 4356304411389892089}
 --- !u!114 &7311554757840178460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,10 +231,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_DirtSplatter
       objectReference: {fileID: 0}
-    - target: {fileID: 191114, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 421170, guid: 834c99069a124aa439d5795c3579843b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -278,50 +274,6 @@ PrefabInstance:
     - target: {fileID: 421170, guid: 834c99069a124aa439d5795c3579843b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: cullingMode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: CollisionModule.m_Planes.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
-      value: 0.09980084
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[2].time
-      value: 0.36385995
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: SizeModule.curve.minCurve.m_Curve.Array.data[1].time
-      value: 0.12046707
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: SizeModule.curve.minCurve.m_Curve.Array.data[2].time
-      value: 0.36385995
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value
-      value: 0.23887879
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
-      value: 0.71621627
-      objectReference: {fileID: 0}
-    - target: {fileID: 19801442, guid: 834c99069a124aa439d5795c3579843b, type: 3}
-      propertyPath: SizeModule.curve.minCurve.m_Curve.Array.data[1].value
-      value: 0.3108108
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 834c99069a124aa439d5795c3579843b, type: 3}

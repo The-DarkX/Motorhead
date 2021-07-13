@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MovementController
 {
-	[Header("Effects")]
-	public ParticleSystem trailParticles;
-	public GameObject explosionParticles;
-
 	float rotation;
 
 	Rigidbody rb;
@@ -18,8 +14,6 @@ public class PlayerController : MovementController
 	{
 		rb = GetComponent<Rigidbody>();
 		input = InputManager.instance;
-
-		trailParticles.Play();
 	}
 
 	void Update()

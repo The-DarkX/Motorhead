@@ -13,8 +13,6 @@ public class EnemyController : MovementController
 
     public CollectableType collectableType;
 
-    public ParticleSystem trailParticles;
-
     private float rotation = 0;
 
     private GameObject explosionParticles;
@@ -32,8 +30,6 @@ public class EnemyController : MovementController
 
         explosionParticles = GameManager.instance.explosionParticles;
         catchParticles = GameManager.instance.catchParticles;
-
-        trailParticles.Play();
     }
 
 	void FixedUpdate()
