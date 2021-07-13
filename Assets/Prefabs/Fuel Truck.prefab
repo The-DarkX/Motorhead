@@ -102,7 +102,7 @@ MonoBehaviour:
   rotationSpeed: 35
   trailParticles: {fileID: 4356304411389892089}
   steerTime: 0.75
-  minScoreIncrement: 10
+  minScoreIncrement: 15
   maxScoreIncrement: 30
   collectableType: 1
 --- !u!114 &7311554757840178460
