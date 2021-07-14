@@ -9,12 +9,26 @@ public class MainMenu : MonoBehaviour
 
     public GameObject settingsPanel;
 
+    public Animator sceneTransition;
+    public float transitionTime = 1.0f;
+
     public void PlayGame()
     {
-        SceneManager.LoadScene("Main");
+        StartCoroutine(PlayGame(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
-    public void OpenSettings()
+    IEnumerator PlayGame(int levelIndex)
+    {
+    //Play Animation
+        sceneTransition.SetTrigger("ButtonPress");
+    //Wait
+        yield return new WaitForSeconds(transitionTime);
+    //LoadScene
+        SceneManager.LoadScene(levelIndex);
+
+    }
+
+    /*public void OpenSettings()
     {
         if(inSettings == false)
         {
@@ -31,11 +45,12 @@ public class MainMenu : MonoBehaviour
             inSettings = false;
         }
 
-    }
+    }*/
 
     public void QuitGame()
     {
         Debug.Log("Quitting Game");
         Application.Quit();
     }
+
 }
