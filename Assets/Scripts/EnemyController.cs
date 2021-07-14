@@ -17,6 +17,7 @@ public class EnemyController : MovementController
 
     private GameObject explosionParticles;
     private GameObject catchParticles;
+    private GameObject refueledParticles;
 
     Rigidbody rb;
     EnemySpawner spawner;
@@ -30,6 +31,7 @@ public class EnemyController : MovementController
 
         explosionParticles = GameManager.instance.explosionParticles;
         catchParticles = GameManager.instance.catchParticles;
+        refueledParticles = GameManager.instance.refueledParticles;
     }
 
 	void FixedUpdate()
@@ -118,7 +120,7 @@ public class EnemyController : MovementController
 
         trailParticles.Stop();
         Vector3 pos = other.GetContact(0).point;
-        GameObject explosion = Instantiate(catchParticles, pos, catchParticles.transform.rotation);
+        GameObject explosion = Instantiate(refueledParticles, pos, refueledParticles.transform.rotation);
         Destroy(explosion, 2);
 
         AudioManager.instance.PlaySound("Refuel");

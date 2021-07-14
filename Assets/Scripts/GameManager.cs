@@ -2,7 +2,6 @@ using System.Collections;
 using System.Globalization;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 using EZCameraShake;
 
@@ -11,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Particles")]
     public GameObject explosionParticles;
     public GameObject catchParticles;
+    public GameObject refueledParticles;
 
     [Header("Score")]
     public TMP_Text scoreText;
@@ -93,15 +93,6 @@ public class GameManager : MonoBehaviour
         speedometerArrow.rotation = arrowRotation;
     } 
 
-
-    IEnumerator Restart(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        int index = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(index);
-    }
-
     public void BeginGame() 
     {
         isGameOn = true;
@@ -134,7 +125,7 @@ public class GameManager : MonoBehaviour
 
         gameOverCanvas.SetActive(true);
 
-        StartCoroutine(Restart(4));
+        LevelLoader.instance.RestartGame(4);
     }
 
 	#region Fuel
@@ -188,18 +179,6 @@ public class GameManager : MonoBehaviour
         {
             score -= scoreDecrement;
         }
-    }
-	#endregion
-
-	#region Scene Management
-	public void LoadScene(int index)
-    {
-        SceneManager.LoadScene(index);
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
     }
 	#endregion
 }
