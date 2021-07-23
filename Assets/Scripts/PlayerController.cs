@@ -20,7 +20,7 @@ public class PlayerController : MovementController
 	{
 		rotation = input.movementAxis;
 
-		currentSpeed = moveSpeed * (GameManager.instance.fuel / 100);
+		currentSpeed = moveSpeed * (ScoreSystem.instance.fuel / 100);
 	}
 
 	void FixedUpdate()

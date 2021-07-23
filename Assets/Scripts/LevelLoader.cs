@@ -24,14 +24,7 @@ public class LevelLoader : MonoBehaviour
 
 	public void LoadScene(int index)
     {
-        StartCoroutine(Load(index));
-    }
-
-    IEnumerator Load(int index)
-    {
-        transition.SetTrigger("Start");
-        yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(index);
+        StartCoroutine(LoadSequence(index));
     }
 
     public void RestartGame(float delay) 
@@ -45,5 +38,26 @@ public class LevelLoader : MonoBehaviour
 
         int index = SceneManager.GetActiveScene().buildIndex;
         LoadScene(index);
+    }
+
+    public void Quit() 
+    {
+        StartCoroutine(QuitSequence());
+    }
+
+    IEnumerator QuitSequence()
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        Debug.Log("Quitting...");
+        Application.Quit();
+    }
+
+    IEnumerator LoadSequence(int index)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        Debug.Log("Loading a new scene...");
+        SceneManager.LoadScene(index);
     }
 }

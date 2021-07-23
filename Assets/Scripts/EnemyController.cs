@@ -108,7 +108,7 @@ public class EnemyController : MovementController
 
         AudioManager.instance.PlaySound("Catch");
 
-        GameManager.instance.AddScore(Random.Range(minScoreIncrement, maxScoreIncrement));
+        ScoreSystem.instance.AddScore(Random.Range(minScoreIncrement, maxScoreIncrement));
 
         spawner.enemies.Remove(this); // Removed from enemies list
         Destroy(gameObject);
@@ -125,7 +125,7 @@ public class EnemyController : MovementController
 
         AudioManager.instance.PlaySound("Refuel");
 
-        GameManager.instance.AddFuel(Random.Range(minScoreIncrement, maxScoreIncrement));
+        ScoreSystem.instance.AddFuel(Random.Range(minScoreIncrement, maxScoreIncrement));
 
         spawner.enemies.Remove(this); // Removed from enemies list
         Destroy(gameObject);

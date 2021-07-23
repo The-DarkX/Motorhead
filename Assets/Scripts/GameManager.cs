@@ -12,30 +12,13 @@ public class GameManager : MonoBehaviour
     public GameObject catchParticles;
     public GameObject refueledParticles;
 
-    [Header("Score")]
-    public TMP_Text scoreText;
-
-    public GameObject gameOverCanvas;
-    public GameObject speedometerCanvas;
-    public RectTransform speedometerArrow;
-
-    public bool useTimer = true;
-    public bool isGameOn = false;
-
-    [Header("Fuel")]
-    public float fuel = 100;
-    public float fuelLeakRate = 0.5f;
-    public float fuelLeakIncrease = 0.5f;
-    public float maxFuel = 120f;
-
-    float score;
-    float currentFuelLeakRate;
-
     AudioManager audioManager;
 
     [HideInInspector] public Transform player;
 
     public static GameManager instance { get; private set; }
+
+    public bool isGameOn = false;
 
     private void Awake()
     {
@@ -52,51 +35,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         audioManager = AudioManager.instance;
-        player = FindObjectOfType<PlayerController>().transform;
 
-        isGameOn = false;
-        speedometerCanvas.SetActive(false);
-        gameOverCanvas.SetActive(false);
-
-        currentFuelLeakRate = fuelLeakRate;
+        if (FindObjectOfType<PlayerController>() != null)
+            player = FindObjectOfType<PlayerController>().transform;
     }
-
-    void Update()
-    {
-        FuelCounter();
-
-        if (isGameOn)
-        {
-            if (useTimer)
-                ScoreCounter();
-
-            DecreaseFuel();
-        }
-    }
-
-    void ScoreCounter()
-    {
-        if (score > 0)
-        {
-            scoreText.text = score.ToString("C", CultureInfo.CurrentCulture);
-        }
-        else
-        {
-            score = 0;
-            scoreText.text = score.ToString("C", CultureInfo.CurrentCulture);
-        }
-    }
-
-    void FuelCounter() 
-    {
-        Quaternion arrowRotation = Quaternion.Euler(0, 0, fuel * (-200 / maxFuel));
-        speedometerArrow.rotation = arrowRotation;
-    } 
 
     public void BeginGame() 
     {
         isGameOn = true;
-        speedometerCanvas.SetActive(true);
 
         audioManager.PlaySound("MainTheme");
         audioManager.PlaySound("CarEngine");
@@ -105,7 +51,6 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         isGameOn = false;
-        speedometerCanvas.SetActive(false);
 
         audioManager.StopSound("MainTheme");
         audioManager.StopSound("CarEngine");
@@ -113,7 +58,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        player.gameObject.SetActive(false);
+        if (player != null)
+            player.gameObject.SetActive(false);
+
         Instantiate(explosionParticles, player.position, Quaternion.identity);
 
         StopGame();
@@ -123,62 +70,8 @@ public class GameManager : MonoBehaviour
 
         CameraShaker.Instance.ShakeOnce(7, 2, 0, 5);
 
-        gameOverCanvas.SetActive(true);
-
-        LevelLoader.instance.RestartGame(4);
+        LevelLoader.instance.LoadScene(0);
     }
 
-	#region Fuel
-	void DecreaseFuel()
-    {
-        if (fuel > 0)
-        {
-            fuel -= Time.deltaTime * currentFuelLeakRate;
-        }
-        else
-        {
-            fuel = 0;
-            GameOver();
-        }
-    }
-
-    public void AddFuel(float amount)
-    {
-        currentFuelLeakRate += fuelLeakIncrease;
-
-        if (fuel + amount < maxFuel)
-        {
-            fuel += amount;
-        }
-        else
-        {
-            fuel = maxFuel;
-        }
-    }
-	#endregion
-
-	#region Score
-	public void AddScore(float scoreIncrement)
-    {
-        float newScore = score + scoreIncrement;
-
-        if (newScore > PlayerPrefs.GetFloat("GameScore", 0))
-        {
-            PlayerPrefs.SetFloat("GameScore", newScore);
-        }
-        score = newScore;
-    }
-
-    public void SubtractScore(int scoreDecrement)
-    {
-        if (score - scoreDecrement <= 0)
-        {
-            score = 0;
-        }
-        else
-        {
-            score -= scoreDecrement;
-        }
-    }
-	#endregion
+	
 }

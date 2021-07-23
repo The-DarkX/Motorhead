@@ -43,3 +43,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48c4fcff417d644091dc61a1ecca97c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds:
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: bf463a488f02c624ea9894bf5104852d, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 1
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 9e8ddf09ec6e4a0469a425298427a1d9, type: 3}
+    volume: 0.7
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.5
+    loop: 0
+  - name: Catch
+    clip: {fileID: 8300000, guid: 33ef5d80e210fe246a521c5b0ef96bc4, type: 3}
+    volume: 0.7
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.5
+    loop: 0
+  - name: Refuel
+    clip: {fileID: 8300000, guid: 319627b6bf7b1864c9862a44d9fc4bae, type: 3}
+    volume: 0.7
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.5
+    loop: 0
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 45d929ccc95b09c48bc5b0b39cf97c0a, type: 3}
+    volume: 0.7
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0.5
+    loop: 0
+  - name: CarEngine
+    clip: {fileID: 8300000, guid: e299ccff6d4c9b94ca09e85a58997257, type: 3}
+    volume: 0.6
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 1

@@ -10,22 +10,17 @@ public class EnemySpawner : MonoBehaviour
 
     public float waitTime = 1;
     public int maxAmount = 10;
+    public bool canSpawn = true;
+
     public Transform planet;
     public GameObject[] enemyPrefabs;
     public List<EnemyController> enemies = new List<EnemyController>();
 
     Vector3 spawnPos;
 
-    Transform player;
-
-    void Start()
-    {
-        player = FindObjectOfType<PlayerController>().transform;
-    }
-
     void Update()
     {
-        if (enemies.Count < maxAmount)
+        if (enemies.Count < maxAmount && canSpawn)
             StartCoroutine(Spawn());
     }
 
@@ -33,14 +28,18 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject obj = SelectPrefab();
 
-        spawnPos = Random.onUnitSphere * planet.localScale.x;
+        spawnPos = planet.position + (Random.onUnitSphere * planet.localScale.x);
 
         GameObject enemy = Instantiate(obj, spawnPos, Quaternion.identity, transform);
 
-        while (Physics.CheckSphere(spawnPos, minSpawnDistance, whatIsObstacle) || !Physics.CheckSphere(spawnPos, minSpawnDistance, whatIsGround) || enemy.GetComponentInChildren<Renderer>().isVisible)
-        {
-            spawnPos = Random.onUnitSphere * planet.localScale.x;
-        }
+		for (int i = 0; i < 10; i++)
+		{
+            if (Physics.CheckSphere(spawnPos, minSpawnDistance, whatIsObstacle) || !Physics.CheckSphere(spawnPos, minSpawnDistance, whatIsGround) || enemy.GetComponentInChildren<Renderer>().isVisible)
+            {
+                spawnPos = planet.position + Random.onUnitSphere;
+            }
+            else break;
+		}
 
         enemy.transform.position = spawnPos;
         enemies.Add(enemy.GetComponent<EnemyController>());

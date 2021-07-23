@@ -26,7 +26,10 @@ public class MovementController : MonoBehaviour
     {
         if (canMove)
         {
-            if (GameManager.instance.isGameOn)
+            if (FindObjectOfType<GameManager>() == null)
+                return;
+
+            else if (FindObjectOfType<GameManager>()!=null && GameManager.instance.isGameOn)
             {
                 //trailParticles.Play();
                 //trailParticles.enableEmission = true;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2861677612599916827}
   - component: {fileID: 2861677612599916826}
   - component: {fileID: 1892971919}
+  - component: {fileID: 8975472777738166595}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -46,14 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionParticles: {fileID: 8156162809566443065, guid: be2fba8c8e5f03940bc1e7a557504360, type: 3}
   catchParticles: {fileID: 4534865624399157714, guid: 127714a078ce1be4fbde4f62c4108050, type: 3}
-  scoreText: {fileID: 0}
-  gameOverCanvas: {fileID: 0}
-  useTimer: 1
-  isGameOn: 0
-  fuel: 100
-  fuelLeakRate: 5
-  maxFuel: 120
+  refueledParticles: {fileID: 4534865624399157714, guid: 79ffd53e63ad13144b7b4b022b9a9b3e, type: 3}
   player: {fileID: 0}
+  isGameOn: 0
 --- !u!114 &1892971919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,3 +63,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownText: {fileID: 0}
+--- !u!114 &8975472777738166595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861677612599916825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c76b593fe82dc44fbe5b1161a46b2d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  gameOverCanvas: {fileID: 0}
+  speedometerCanvas: {fileID: 0}
+  speedometerArrow: {fileID: 0}
+  useTimer: 1
+  fuel: 100
+  fuelLeakRate: 0.5
+  fuelLeakIncrease: 0.5
+  maxFuel: 120

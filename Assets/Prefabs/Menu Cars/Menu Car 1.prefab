@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8729541297336815779}
   - component: {fileID: 7311554757840178460}
   m_Layer: 7
-  m_Name: Basic Enemy 7
+  m_Name: Menu Car 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5505361951599488980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4356304411408260521}
   - {fileID: 5114653103370857204}
