@@ -25,9 +25,20 @@ public class AudioManager : MonoBehaviour
             GameObject _go = new GameObject("_Sound" + i + "_" + sounds[i].name);
             _go.AddComponent<AudioSource>();
             sounds[i].SetSource(_go.GetComponent<AudioSource>());
-            _go.transform.SetParent(transform);
+            _go.transform.SetParent(transform);                
         }
     }
+
+	private void Start()
+	{
+        for (int i = 0; i < sounds.Length; i++) 
+        {
+            if (sounds[i].playOnAwake) 
+            {
+                PlaySound(sounds[i].name);
+            }
+        }
+	}
 
 	public void PlaySound(string name)
     {
@@ -73,6 +84,7 @@ public class Sound
     [Range(0, 0.5f)] public float randomPitch = 0.1f;
 
     public bool loop = false;
+    public bool playOnAwake = false;
 
     private AudioSource source;
 
@@ -81,6 +93,7 @@ public class Sound
         source = _source;
         source.clip = clip;
         source.loop = loop;
+        source.playOnAwake = playOnAwake;
     }
 
     public void Play()

@@ -12,6 +12,7 @@ public class EnemyController : MovementController
     public float maxScoreIncrement = 30f;
 
     public CollectableType collectableType;
+    public bool useCameraShake = true;
 
     private float rotation = 0;
 
@@ -84,7 +85,8 @@ public class EnemyController : MovementController
 
     public void DestroyOnContact(Collision other) 
     {
-        CameraShaker.Instance.ShakeOnce(4, 3, 0, 1);
+        if (useCameraShake)
+            CameraShaker.Instance.ShakeOnce(4, 3, 0, 1);
 
         trailParticles.Stop();
         Vector3 pos = other.GetContact(0).point;
@@ -99,7 +101,8 @@ public class EnemyController : MovementController
 
     public void ScorePoints(Collision other) 
     {
-        CameraShaker.Instance.ShakeOnce(5, 3, 0, 1);
+        if (useCameraShake)
+            CameraShaker.Instance.ShakeOnce(5, 3, 0, 1);
 
         trailParticles.Stop();
         Vector3 pos = other.GetContact(0).point;
@@ -116,7 +119,8 @@ public class EnemyController : MovementController
 
     public void Refuel(Collision other)
     {
-        CameraShaker.Instance.ShakeOnce(5, 3, 0, 1);
+        if (useCameraShake)
+            CameraShaker.Instance.ShakeOnce(5, 3, 0, 1);
 
         trailParticles.Stop();
         Vector3 pos = other.GetContact(0).point;

@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     {
         isGameOn = true;
 
-        audioManager.PlaySound("MainTheme");
+        audioManager.PlaySound("Music");
         audioManager.PlaySound("CarEngine");
     }
 
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     {
         isGameOn = false;
 
-        audioManager.StopSound("MainTheme");
+        audioManager.StopSound("Music");
         audioManager.StopSound("CarEngine");
     }
 

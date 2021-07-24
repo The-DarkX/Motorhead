@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5505361951599488980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4356304411408260521}
   - {fileID: 6844097952373783783}
@@ -105,6 +105,7 @@ MonoBehaviour:
   minScoreIncrement: 10
   maxScoreIncrement: 30
   collectableType: 0
+  useCameraShake: 0
 --- !u!114 &7311554757840178460
 MonoBehaviour:
   m_ObjectHideFlags: 0
