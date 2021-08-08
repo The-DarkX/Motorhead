@@ -94,10 +94,10 @@ MonoBehaviour:
   moveSpeed: 4
   rotationMultiplier: 35
   wheels:
-  - {fileID: 8968888303630804906, guid: 1bb12c1a3aba72e488cd8b28aa726215, type: 3}
-  - {fileID: 6092726686247539286, guid: 1bb12c1a3aba72e488cd8b28aa726215, type: 3}
-  - {fileID: 4456716731323498356, guid: 1bb12c1a3aba72e488cd8b28aa726215, type: 3}
-  - {fileID: 7055074572530715407, guid: 1bb12c1a3aba72e488cd8b28aa726215, type: 3}
+  - {fileID: 7310040273518227215}
+  - {fileID: 4176313675673623419}
+  - {fileID: 5142826376727106361}
+  - {fileID: 8979699748323327360}
   currentSpeed: 0
   rotationSpeed: 35
   trailParticles: {fileID: 4356304411389892089, guid: 1bb12c1a3aba72e488cd8b28aa726215, type: 3}
@@ -433,5 +433,25 @@ PrefabInstance:
 --- !u!4 &6883564737880728743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4123184188067662063, guid: 7aaabd0d3b0a06c4bb1e0737142a9dea, type: 3}
+  m_PrefabInstance: {fileID: 7403684162190634056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7310040273518227215 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 273964637451748167, guid: 7aaabd0d3b0a06c4bb1e0737142a9dea, type: 3}
+  m_PrefabInstance: {fileID: 7403684162190634056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4176313675673623419 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6866323318659561267, guid: 7aaabd0d3b0a06c4bb1e0737142a9dea, type: 3}
+  m_PrefabInstance: {fileID: 7403684162190634056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5142826376727106361 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2441468677336006513, guid: 7aaabd0d3b0a06c4bb1e0737142a9dea, type: 3}
+  m_PrefabInstance: {fileID: 7403684162190634056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8979699748323327360 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1882899218003595720, guid: 7aaabd0d3b0a06c4bb1e0737142a9dea, type: 3}
   m_PrefabInstance: {fileID: 7403684162190634056}
   m_PrefabAsset: {fileID: 0}

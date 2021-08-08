@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float minSpawnDistance = 10;
+    public float minSpawnDistance = 5;
     public LayerMask whatIsObstacle;
     public LayerMask whatIsGround;
 
@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
 
     Vector3 spawnPos;
 
-    void Update()
+	void Update()
     {
         if (enemies.Count < maxAmount && canSpawn)
             StartCoroutine(Spawn());

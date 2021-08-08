@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementController : MonoBehaviour
@@ -17,9 +15,19 @@ public class MovementController : MonoBehaviour
 
     bool canMove = true;
 
+    bool spinWheels;
+
 	private void Awake()
 	{
         currentSpeed = moveSpeed;
+	}
+
+	private void Start()
+	{
+        if (wheels == null) 
+            spinWheels = false;
+        else 
+            spinWheels = true;
 	}
 
 	virtual public void Movement(Rigidbody rb, float rotation) 
@@ -29,7 +37,7 @@ public class MovementController : MonoBehaviour
             if (FindObjectOfType<GameManager>() == null)
                 return;
 
-            else if (FindObjectOfType<GameManager>()!=null && GameManager.instance.isGameOn)
+            else if (FindObjectOfType<GameManager>() != null && GameManager.instance.isGameOn)
             {
                 //trailParticles.Play();
                 //trailParticles.enableEmission = true;
@@ -42,10 +50,12 @@ public class MovementController : MonoBehaviour
                 Quaternion targetRotation = rb.rotation * deltaRotation;
                 rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 50f * Time.fixedDeltaTime));
 
-				foreach (Transform wheel in wheels)
-				{
+                if (spinWheels) return;
+
+                foreach (Transform wheel in wheels)
+                {
                     wheel.transform.Rotate(currentSpeed, 0, 0);
-				}
+                }
             }
         }
     }

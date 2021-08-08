@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using TMPro;
@@ -118,9 +116,9 @@ public class ScoreSystem : MonoBehaviour
     {
         float newScore = score + scoreIncrement;
 
-        if (newScore > PlayerPrefs.GetFloat("GameScore", 0))
+        if (newScore > PlayerPrefs.GetFloat("HighScore", 0))
         {
-            PlayerPrefs.SetFloat("GameScore", newScore);
+            PlayerPrefs.SetFloat("HighScore", newScore);
         }
         score = newScore;
     }

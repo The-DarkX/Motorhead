@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using EZCameraShake;
 
@@ -8,8 +7,8 @@ public class EnemyController : MovementController
     public float steerTime = 0.5f;
 
     [Header("Other")]
-    public float minScoreIncrement = 10f;
-    public float maxScoreIncrement = 30f;
+    public float minScoreIncrement = 10;
+    public float maxScoreIncrement = 30;
 
     public CollectableType collectableType;
     public bool useCameraShake = true;

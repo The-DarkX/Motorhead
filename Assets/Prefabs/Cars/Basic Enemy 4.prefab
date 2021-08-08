@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &5505361951599488976
 Transform:
@@ -93,11 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   rotationMultiplier: 35
-  wheels:
-  - {fileID: 8968888303630804906}
-  - {fileID: 6092726686247539286}
-  - {fileID: 4456716731323498356}
-  - {fileID: 7055074572530715407}
+  wheels: []
   currentSpeed: 0
   rotationSpeed: 35
   trailParticles: {fileID: 4356304411389892089}
@@ -105,6 +101,7 @@ MonoBehaviour:
   minScoreIncrement: 10
   maxScoreIncrement: 30
   collectableType: 0
+  useCameraShake: 1
 --- !u!114 &7311554757840178460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +133,10 @@ PrefabInstance:
     - target: {fileID: 191114, guid: 834c99069a124aa439d5795c3579843b, type: 3}
       propertyPath: m_Name
       value: FX_DirtSplatter
+      objectReference: {fileID: 0}
+    - target: {fileID: 191114, guid: 834c99069a124aa439d5795c3579843b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 421170, guid: 834c99069a124aa439d5795c3579843b, type: 3}
       propertyPath: m_RootOrder
@@ -200,6 +201,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5505361951599488976}
     m_Modifications:
+    - target: {fileID: 1165823573862572911, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011162384706159691, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477421702006632841, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852430308498014749, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 6303775183693206277, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -260,30 +277,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: basic car green
       objectReference: {fileID: 0}
+    - target: {fileID: 6998835685983658262, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7291009622655865408, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259634240431793686, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
 --- !u!4 &4322009615196282275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6303775183693206277, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
-  m_PrefabInstance: {fileID: 7818634855430491814}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8968888303630804906 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1222369534405372172, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
-  m_PrefabInstance: {fileID: 7818634855430491814}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6092726686247539286 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4038858439445699824, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
-  m_PrefabInstance: {fileID: 7818634855430491814}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4456716731323498356 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5861486286077931986, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
-  m_PrefabInstance: {fileID: 7818634855430491814}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7055074572530715407 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 966574110844487081, guid: bdb2718d2691e0d488c01f69c70816b8, type: 3}
   m_PrefabInstance: {fileID: 7818634855430491814}
   m_PrefabAsset: {fileID: 0}

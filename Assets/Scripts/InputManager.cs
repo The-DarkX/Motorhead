@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-1)]
 public class InputManager : MonoBehaviour
 {
     PlayerControls controls;
@@ -11,7 +10,7 @@ public class InputManager : MonoBehaviour
 
 	public Vector3 acceleration;
 
-	public bool pauseButton = false;
+	public float minSwipeDistance = 0.5f;
 
 	public static InputManager instance { get; private set; }
 
@@ -31,14 +30,8 @@ public class InputManager : MonoBehaviour
 		controls.Gameplay.Movement.performed += ctx => movementAxis = ctx.ReadValue<float>();
 		controls.Gameplay.Movement.canceled += _ => movementAxis = 0;
 
-		controls.Gameplay.Pause.performed += Jump;
-	}
-
-
-	void Jump(InputAction.CallbackContext context) 
-	{
-		pauseButton = !pauseButton;
-		Debug.Log(pauseButton);
+		//controls.Gameplay.Touch.started += _=>print("pressed");
+		//controls.Gameplay.Touch.canceled += _ => print("released");
 	}
 
 	private void OnEnable()

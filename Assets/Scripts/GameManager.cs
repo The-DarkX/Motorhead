@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Globalization;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using EZCameraShake;
@@ -11,6 +8,9 @@ public class GameManager : MonoBehaviour
     public GameObject explosionParticles;
     public GameObject catchParticles;
     public GameObject refueledParticles;
+
+    [Header("Version")]
+    public TMP_Text versionText;
 
     AudioManager audioManager;
 
@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        versionText.text = "v" + Application.version;
     }
 
     void Start()

@@ -93,11 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   rotationMultiplier: 35
-  wheels:
-  - {fileID: 118572482027913480}
-  - {fileID: 2981123245776516340}
-  - {fileID: 4615016640817093078}
-  - {fileID: 2033953155727584685}
+  wheels: []
   currentSpeed: 0
   rotationSpeed: 35
   trailParticles: {fileID: 4356304411389892089}
@@ -199,26 +195,6 @@ PrefabInstance:
 --- !u!4 &5055424409731349249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8993861160414616497, guid: fc1e7d3c9b9a20743bacefbf2f4bc741, type: 3}
-  m_PrefabInstance: {fileID: 4249397648619086000}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &118572482027913480 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4277757391643812280, guid: fc1e7d3c9b9a20743bacefbf2f4bc741, type: 3}
-  m_PrefabInstance: {fileID: 4249397648619086000}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2981123245776516340 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1416372640514905156, guid: fc1e7d3c9b9a20743bacefbf2f4bc741, type: 3}
-  m_PrefabInstance: {fileID: 4249397648619086000}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4615016640817093078 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8859479366635714918, guid: fc1e7d3c9b9a20743bacefbf2f4bc741, type: 3}
-  m_PrefabInstance: {fileID: 4249397648619086000}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2033953155727584685 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2793051161819565341, guid: fc1e7d3c9b9a20743bacefbf2f4bc741, type: 3}
   m_PrefabInstance: {fileID: 4249397648619086000}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4356304411408117915

@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &5505361951599488976
 Transform:
@@ -93,11 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   rotationMultiplier: 35
-  wheels:
-  - {fileID: 1834696158375479022}
-  - {fileID: 3570356869937279762}
-  - {fileID: 6402062904656191024}
-  - {fileID: 353931669062478411}
+  wheels: []
   currentSpeed: 0
   rotationSpeed: 35
   trailParticles: {fileID: 4356304411389892089}
@@ -105,6 +101,7 @@ MonoBehaviour:
   minScoreIncrement: 10
   maxScoreIncrement: 30
   collectableType: 0
+  useCameraShake: 1
 --- !u!114 &7311554757840178460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +133,10 @@ PrefabInstance:
     - target: {fileID: 191114, guid: 834c99069a124aa439d5795c3579843b, type: 3}
       propertyPath: m_Name
       value: FX_DirtSplatter
+      objectReference: {fileID: 0}
+    - target: {fileID: 191114, guid: 834c99069a124aa439d5795c3579843b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 421170, guid: 834c99069a124aa439d5795c3579843b, type: 3}
       propertyPath: m_RootOrder
@@ -256,34 +257,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 926185500347390424, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288535895498893900, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3405397522523684307, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092826527698798981, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4378239273035496147, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
       propertyPath: m_Name
       value: basic car red
+      objectReference: {fileID: 0}
+    - target: {fileID: 4378239273035496147, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047249978223370126, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606890038446602410, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
 --- !u!4 &6844097952373783783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 763915067776764096, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
-  m_PrefabInstance: {fileID: 6080675779481482279}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1834696158375479022 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5554275384820642505, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
-  m_PrefabInstance: {fileID: 6080675779481482279}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3570356869937279762 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7344969462454159157, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
-  m_PrefabInstance: {fileID: 6080675779481482279}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6402062904656191024 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 917138027915799063, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
-  m_PrefabInstance: {fileID: 6080675779481482279}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &353931669062478411 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5803887154080407148, guid: 8ccb09998d91e17469c16cbd13da41fb, type: 3}
   m_PrefabInstance: {fileID: 6080675779481482279}
   m_PrefabAsset: {fileID: 0}
