@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     AudioManager audioManager;
 
+    public PlayFabManager playFabManager;
+
     [HideInInspector] public Transform player;
 
     public static GameManager instance { get; private set; }
@@ -60,6 +62,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        PlayFabManager.instance.SendLeaderboard(PlayerPrefs.GetInt("HighScore", 0));
+
         if (player != null)
             player.gameObject.SetActive(false);
 

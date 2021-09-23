@@ -7,8 +7,8 @@ public class EnemyController : MovementController
     public float steerTime = 0.5f;
 
     [Header("Other")]
-    public float minScoreIncrement = 10;
-    public float maxScoreIncrement = 30;
+    public int minScoreIncrement = 10;
+    public int maxScoreIncrement = 30;
 
     public CollectableType collectableType;
     public bool useCameraShake = true;

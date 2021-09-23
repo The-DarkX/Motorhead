@@ -4697,6 +4697,10 @@ PrefabInstance:
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 1473924732}
+    - target: {fileID: 1984533372910100386, guid: 984afb6859535c547a9836aa0bf95f85, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2861677612599916825, guid: 984afb6859535c547a9836aa0bf95f85, type: 3}
       propertyPath: m_Name
       value: Game Manager

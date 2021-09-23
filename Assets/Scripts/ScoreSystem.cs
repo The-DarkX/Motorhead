@@ -17,7 +17,7 @@ public class ScoreSystem : MonoBehaviour
     public float fuelLeakIncrease = 0.5f;
     public float maxFuel = 120f;
 
-    float score;
+    int score;
     float currentFuelLeakRate;
 
     GameManager gameManager;
@@ -112,13 +112,13 @@ public class ScoreSystem : MonoBehaviour
     #endregion
 
     #region Score
-    public void AddScore(float scoreIncrement)
+    public void AddScore(int scoreIncrement)
     {
-        float newScore = score + scoreIncrement;
+        int newScore = score + scoreIncrement;
 
-        if (newScore > PlayerPrefs.GetFloat("HighScore", 0))
+        if (newScore > PlayerPrefs.GetInt("HighScore", 0))
         {
-            PlayerPrefs.SetFloat("HighScore", newScore);
+            PlayerPrefs.SetInt("HighScore", newScore);
         }
         score = newScore;
     }
