@@ -17,7 +17,7 @@ public class ScoreSystem : MonoBehaviour
     public float fuelLeakIncrease = 0.5f;
     public float maxFuel = 120f;
 
-    int score;
+    public int score;
     float currentFuelLeakRate;
 
     GameManager gameManager;
@@ -67,12 +67,12 @@ public class ScoreSystem : MonoBehaviour
     {
         if (score > 0)
         {
-            scoreText.text = score.ToString("C", CultureInfo.CurrentCulture);
+            scoreText.text = score.ToString("C0", CultureInfo.CurrentCulture);
         }
         else
         {
             score = 0;
-            scoreText.text = score.ToString("C", CultureInfo.CurrentCulture);
+            scoreText.text = score.ToString("C0", CultureInfo.CurrentCulture);
         }
     }
 

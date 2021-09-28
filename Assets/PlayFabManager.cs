@@ -4,6 +4,7 @@ using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 using TMPro;
+using UnityEngine.Events;
 
 public class PlayFabManager : MonoBehaviour
 {
@@ -35,10 +36,11 @@ public class PlayFabManager : MonoBehaviour
         }
     }
 
+    /*
 
     void Start()
     {
-        Login();
+        //Login();
     }
 
     void Login() 
@@ -63,7 +65,7 @@ public class PlayFabManager : MonoBehaviour
         if (result.InfoResultPayload.PlayerProfile != null)
             username = result.InfoResultPayload.PlayerProfile.DisplayName;
     }
-
+    */
     public void DisplayLeaderboard() 
     {
         leaderboardWindow.SetActive(true);
@@ -71,31 +73,61 @@ public class PlayFabManager : MonoBehaviour
         GetLeaderboard();
     }
 
-    public void EnterUsername() 
+    public void CheckUsername() 
     {
+        print(username);
+        nameWindow.SetActive(true);
+
+        /*
         if (username == null)
+        {
             nameWindow.SetActive(true);
+        }
         else
+        {
             nameWindow.SetActive(false);
+            loader.LoadScene(newSceneIndex);
+        }*/
     }
 
-    public void SubmitNameButton() 
+    public void SubmitNameButton(int newSceneIndex) 
     {
+        if (nameInput.text == null) return;
+
+        var registerRequest = new RegisterPlayFabUserRequest
+        {
+            Username = nameInput.name
+        };
+
+        PlayFabClientAPI.RegisterPlayFabUser(registerRequest, OnRegisterUser, OnError);
+
+        /*
         var request = new UpdateUserTitleDisplayNameRequest
         {
             DisplayName = nameInput.text,
         };
+
         PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);
+        loader.LoadScene(newSceneIndex);
+        */
     }
 
+    void OnRegisterUser(RegisterPlayFabUserResult result) 
+    {
+        //Login();
+        nameWindow.SetActive(false);
+        LevelLoader.instance.LoadScene(1);
+    }
+
+    /*
     void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result) 
     {
-        leaderboardWindow.SetActive(true);
-    }
+        nameWindow.SetActive(false);
+    }*/
 
     void OnError(PlayFabError error)
     {
-        //messageText.text = error.ErrorMessage;
+        print(error.ErrorMessage);
 
     }
 

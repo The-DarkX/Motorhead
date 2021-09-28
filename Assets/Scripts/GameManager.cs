@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
 
         audioManager.PlaySound("Music");
         audioManager.PlaySound("CarEngine");
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void StopGame()
@@ -62,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        PlayFabManager.instance.SendLeaderboard(PlayerPrefs.GetInt("HighScore", 0));
+        //PlayFabManager.instance.SendLeaderboard(ScoreSystem.instance.score);
 
         if (player != null)
             player.gameObject.SetActive(false);
@@ -76,8 +79,19 @@ public class GameManager : MonoBehaviour
 
         CameraShaker.Instance.ShakeOnce(7, 2, 0, 5);
 
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+
         LevelLoader.instance.LoadScene(0);
     }
 
-	
+    public void ResetScore() 
+    {
+        PlayerPrefs.SetInt("HighScore", 0);
+    }
+
+    public void ShowHighScore(TMP_Text scoreText) 
+    {
+        scoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+    }
 }

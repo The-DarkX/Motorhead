@@ -6,8 +6,8 @@ public class HighScoreDisplayer : MonoBehaviour
 {
     public TMP_Text highScoreText;
 
-    void Start()
+    void LateUpdate()
     {
-        highScoreText.text = PlayerPrefs.GetFloat("HighScore").ToString("C", CultureInfo.CurrentCulture);
+        highScoreText.text = PlayerPrefs.GetInt("HighScore").ToString("C0", CultureInfo.CurrentCulture);
     }
 }
